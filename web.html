@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View PDF</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f1f1f1;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 20px;
+		}
+		label {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+		input[type="date"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+		}
+		button[type="button"] {
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			background-color: #4CAF50;
+			color: white;
+			font-size: 18px;
+			cursor: pointer;
+			margin-top: 10px;
+		}
+		button[type="button"]:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+	<script>
+		function checkAge() {
+			var birthdate = document.getElementById("birthdate").value;
+			var age = calculateAge(birthdate);
+			if (age >= 18) {
+				window.location.href = "https://mega.nz/file/T6JDRALD#JuYvnkDzDixJfNaETKj1RVFQttvQq7Vg1w0gF4ASDlc";
+			} else {
+				alert("You must be 18 or older to view this document.");
+			}
+		}
+
+		function calculateAge(birthdate) {
+			var today = new Date();
+			var birthdate = new Date(birthdate);
+			var age = today.getFullYear() - birthdate.getFullYear();
+			var monthDiff = today.getMonth() - birthdate.getMonth();
+			if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdate.getDate())) {
+				age--;
+			}
+			return age;
+		}
+	</script>
+</head>
+<body>
+	<h1>View PDF</h1>
+	<p>Please confirm that you are 18 or older to view the document.</p>
+	<form>
+		<label for="birthdate">Birthdate:</label>
+		<input type="date" id="birthdate">
+		<button type="button" onclick="checkAge()">View PDF</button>
+	</form>
+</body>
+</html>
